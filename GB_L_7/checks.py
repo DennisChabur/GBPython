@@ -1,17 +1,19 @@
 import ui_c
-from calculations import sum_c, sub_c, mult_c, div_c
+import Calculation as C
+
+func = ui_c.input_c()
 
 
 def check_action(func):
-    if func[1] == '+' : return sum_c
-    elif func[1] == '-': return sub_c
-    elif func[1] == '*': return mult_c
-    elif func[1] == '/': return div_c
+    if func[1] == '+': return C.sum_c()
+    elif func[1] == '-': return C.sub_c()
+    elif func[1] == '*': return C.mult_c()
+    elif func[1] == '/': return C.div_c()
 
 
 def check_c(func):
-    if func[0].isdigit and func[2].isdigit:
+    if (type(func[0]) == float or type(func[0]) == complex) and func[1] in '+-*/' and (type(func[2]) == float or type(func[2]) == complex):
         return True
     else:
-        print("Некорректный ввод")
+    print("Некорректный ввод")
     return False
